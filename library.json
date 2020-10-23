@@ -1,0 +1,21 @@
+{
+    "name": "EasyColor",
+    "keywords": "color,converter,ili9341,rgb,cmyk,hsl,hsv",
+    "description": "Color converter to many formats.",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/DjamesSuhanko/EasyColor"
+    },
+    "authors":
+    {
+        "name": "Djames Suhanko",
+        "url": "https://github.com/DjamesSuhanko",
+        "maintainer": true
+    },
+    "version": "0.0.2",
+    "license": "GPL3",
+    "frameworks": "arduino",
+    "platforms": "*"
+}
+
