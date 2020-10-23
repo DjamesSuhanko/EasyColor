@@ -165,3 +165,123 @@ cmyk EasyColor::CMYKRGB::RGBtoCMYK(rgb in, cmyk out)
 
     return out;
 }
+//HSL in range 0-1. Returns RGB888
+rgb EasyColor::HSLRGB::HSLtoRGB(hsl in, rgb out)
+{
+    double v;
+    double R,G,B;
+
+    R = in.l; //it's 'L', not 1
+    G = in.l;
+    B = in.l;
+
+    v = (in.l <= 0.5) ? (in.l * (1.0 + in.s)) : (in.l + in.s - in.l * in.s);
+
+    if (v > 0){
+        double m;
+        double sv;
+        int sextant;
+        double fract, vsf, mid1, mid2;
+
+        m       = in.l + in.l - v;
+        sv      = (v - m ) / v;
+        in.h   *= 6.0;
+        sextant = (int)in.h;
+        fract   = in.h - sextant;
+        vsf     = v * sv * fract;
+        mid1    = m + vsf;
+        mid2    = v - vsf;
+
+        switch (sextant){
+            case 0:
+                R = v;
+                G = mid1;
+                B = m;
+                break;
+            case 1:
+                R = mid2;
+                G = v;
+                B = m;
+                break;
+            case 2:
+                R = m;
+                G = v;
+                B = mid1;
+                break;
+            case 3:
+                R = m;
+                G = mid2;
+                B = v;
+                break;
+            case 4:
+                R = mid1;
+                G = m;
+                B = v;
+                break;
+            case 5:
+                R = v;
+                G = m;
+                B = mid2;
+                break;
+        }
+    }
+    out.r = (uint8_t) R*255.0;
+    out.g = (uint8_t) G*255.0;
+    out.b = (uint8_t) B*255.0;
+
+    return out;
+
+}
+//RGB888. Returns HSL in range 0-1
+hsl EasyColor::HSLRGB::RGBtoHSL(rgb in, hsl out)
+{
+    double r = in.r/255.0;
+    double g = in.g/255.0;
+    double b = in.g/255.0;
+    
+    double v;
+    double m;
+    double vm;
+    double r2, g2, b2;
+
+    out.h = 0; // default to black
+    out.s = 0;
+    out.l = 0;
+
+    v = max(r,g);
+    v = max(v,b);
+    m = min(r,g);
+    m = min(m,b);
+
+    out.l = (m + v) / 2.0;
+
+    if (out.l <= 0.0){
+        return out;
+    }
+
+    vm = v - m;
+    out.s = vm;
+
+    if (out.s > 0.0){
+        out.s /= (out.l <= 0.5) ? (v + m ) : (2.0 - v - m) ;
+    }
+    else{
+        return out;
+    }
+
+    r2 = (v - in.r) / vm;
+    g2 = (v - in.g) / vm;
+    b2 = (v - in.b) / vm;
+
+    if (in.r == v){
+        out.h = (in.g == m ? 5.0 + b2 : 1.0 - g2);
+    }
+    else if (in.g == v){
+        out.h = (in.b == m ? 1.0 + r2 : 3.0 - b2);
+    }
+    else{
+        out.h = (in.r == m ? 3.0 + g2 : 5.0 - r2);
+    }
+    out.h /= 6.0;
+    return out;
+}

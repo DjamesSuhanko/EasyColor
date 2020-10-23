@@ -1,4 +1,5 @@
 /* Nested classes in EasyColor class. Check it.
+Formulas reference: https://www.rapidtables.com/convert/color/
 */
 #include <Arduino.h>
 #include <math.h>
@@ -59,5 +60,13 @@ class EasyColor{
 
                 rgb CMYKtoRGB(cmyk in, rgb out);
                 cmyk RGBtoCMYK(rgb in, cmyk out);
+        };
+
+        class HSLRGB{
+            public:
+                HSLRGB();
+
+                rgb HSLtoRGB(hsl in, rgb out);
+                hsl RGBtoHSL(rgb in, hsl out);
         };
 };
