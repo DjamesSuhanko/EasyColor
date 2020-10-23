@@ -117,6 +117,23 @@ hsv EasyColor::HSVRGB::RGBtoHSV(rgb in, hsv out)
     }
     return out;
 }
+//TODO: verificar se tem que ser BGR invés de RGB
+uint16_t EasyColor::HSVRGB::RGB24toRGB16(uint8_t r, uint8_t g, uint8_t b)
+{
+    uint8_t blue  = (uint16_t)((b >> 3) & 0x1FU); //8 - 3 = 5
+    uint8_t green = (uint16_t)((g >> 2) & 0x3FU); //8 - 2 = 6
+    uint8_t red   = (uint16_t)((r >> 3) & 0x1FU); //8 - 3 = 5
+    return (red << (16-5)) | (green << (16-(5+6))) | blue << (16-(5+6+5));
+}
+
+rgb EasyColor::HSVRGB::RGB16toRGB24(uint16_t RGB16)
+{
+    rgb out;
+    out.r = (RGB16 & 0b1111100000000000) >> 8;
+    out.g = (RGB16 & 0b11111100000) >> 3;
+    out.b = (RGB16 & 0b11111) << 3;
+    return out; 
+}
 
 rgb EasyColor::CMYKRGB::CMYKtoRGB(cmyk in, rgb out)
 {
@@ -165,6 +182,24 @@ cmyk EasyColor::CMYKRGB::RGBtoCMYK(rgb in, cmyk out)
 
     return out;
 }
+
+uint16_t EasyColor::CMYKRGB::RGB24toRGB16(uint8_t r, uint8_t g, uint8_t b)
+{
+    uint8_t blue  = (uint16_t)((b >> 3) & 0x1FU); //8 - 3 = 5
+    uint8_t green = (uint16_t)((g >> 2) & 0x3FU); //8 - 2 = 6
+    uint8_t red   = (uint16_t)((r >> 3) & 0x1FU); //8 - 3 = 5
+    return (red << (16-5)) | (green << (16-(5+6))) | blue << (16-(5+6+5));
+}
+
+rgb EasyColor::HSVRGB::RGB16toRGB24(uint16_t RGB16)
+{
+    rgb out;
+    out.r = (RGB16 & 0b1111100000000000) >> 8;
+    out.g = (RGB16 & 0b11111100000) >> 3;
+    out.b = (RGB16 & 0b11111) << 3;
+    return out; 
+}
+
 //HSL in range 0-1. Returns RGB888
 rgb EasyColor::HSLRGB::HSLtoRGB(hsl in, rgb out)
 {
@@ -284,4 +319,22 @@ hsl EasyColor::HSLRGB::RGBtoHSL(rgb in, hsl out)
     }
     out.h /= 6.0;
     return out;
+}
+
+
+uint16_t EasyColor::HSLRGB::RGB24toRGB16(uint8_t r, uint8_t g, uint8_t b)
+{
+    uint8_t blue  = (uint16_t)((b >> 3) & 0x1FU); //8 - 3 = 5
+    uint8_t green = (uint16_t)((g >> 2) & 0x3FU); //8 - 2 = 6
+    uint8_t red   = (uint16_t)((r >> 3) & 0x1FU); //8 - 3 = 5
+    return (red << (16-5)) | (green << (16-(5+6))) | blue << (16-(5+6+5));
+}
+
+rgb EasyColor::HSVRGB::RGB16toRGB24(uint16_t RGB16)
+{
+    rgb out;
+    out.r = (RGB16 & 0b1111100000000000) >> 8;
+    out.g = (RGB16 & 0b11111100000) >> 3;
+    out.b = (RGB16 & 0b11111) << 3;
+    return out; 
 }

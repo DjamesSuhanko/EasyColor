@@ -13,7 +13,7 @@
         "url": "https://github.com/DjamesSuhanko",
         "maintainer": true
     },
-    "version": "0.0.4",
+    "version": "1.0.0",
     "license": "GPL3",
     "frameworks": "arduino",
     "platforms": "*"
