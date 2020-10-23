@@ -9,6 +9,9 @@ extern "C" {
 }
 
 #define HUE_ANGLE 360
+#define RGB_MAX   255.0
+#define ONE_DOT   1.0
+#define HUNDRED   100.0
 
 typedef struct {
     uint8_t r;
@@ -17,10 +20,24 @@ typedef struct {
 } rgb;
 
 typedef struct {
+    int c;
+    int m;
+    int y;
+    int k;
+} cmyk;
+
+typedef struct {
     double h;
     double s;
     double v;
 } hsv;
+
+//TODO: check datatype before implement
+typedef struct {
+    double h;
+    double s;
+    double l;
+} hsl;
 
 class EasyColor{
     public:
@@ -39,5 +56,8 @@ class EasyColor{
         class CMYKRGB{
             public:
                 CMYKRGB();
+
+                rgb CMYKtoRGB(cmyk in, rgb out);
+                cmyk RGBtoCMYK(rgb in, cmyk out);
         };
 };

@@ -1,6 +1,11 @@
 #Syntax Coloring Map For EasyColor
 
 #Datatypes (KEYWORD1)
+rgb	KEYWORD1
+hsv	KEYWORD1
+hsl	KEYWORD1
+cmyk	KEYWORD1
+rgb16	KEYWORD1
 
 #Methods and Functions
 HSVtoRGB	KEYWORD2
@@ -14,7 +19,3 @@ HSLtoRGB	KEYWORD2
 RGBtoHSL	KEYWORD2
 
 #Structures (KEYWORD3)
-rgb	KEYWORD1
-hsv	KEYWORD1
-hsl	KEYWORD1
-cmyk	KEYWORD1
