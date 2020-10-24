@@ -51,12 +51,12 @@ class EasyColor{
     public:
         EasyColor();
 
+        uint16_t RGB24toRGB16(uint8_t r, uint8_t g, uint8_t b);
+        rgb RGB16toRGB24(uint16_t RGB16);
+
         class HSVRGB{
             public:
                 HSVRGB();
-
-                uint16_t RGB24toRGB16(uint8_t r, uint8_t g, uint8_t b);
-                rgb RGB16toRGB24(uint16_t RGB16);
 
                 long map(long x, long in_min, long in_max, long out_min, long out_max);
                
@@ -68,9 +68,6 @@ class EasyColor{
             public:
                 CMYKRGB();
 
-                uint16_t RGB24toRGB16(uint8_t r, uint8_t g, uint8_t b);
-                rgb RGB16toRGB24(uint16_t RGB16);
-
                 rgb CMYKtoRGB(cmyk in, rgb out);
                 cmyk RGBtoCMYK(rgb in, cmyk out);
         };
@@ -78,9 +75,6 @@ class EasyColor{
         class HSLRGB{
             public:
                 HSLRGB();
-
-                rgb RGB16toRGB24(uint16_t RGB16);
-                uint16_t RGB24toRGB16(uint8_t r, uint8_t g, uint8_t b);
 
                 rgb HSLtoRGB(hsl in, rgb out);
                 hsl RGBtoHSL(rgb in, hsl out);
