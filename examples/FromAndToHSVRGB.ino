@@ -41,18 +41,6 @@ void setup(){
     Serial.println(out_hsv.h);
     Serial.println(out_hsv.s);
     Serial.println(out_hsv.v);
-    
-    //Olive color from RGB24 to RGB16
-    Serial.println(" ");
-    Serial.println("RGB24 to and from RGB16");
-    uint16_t rgb16_result = hsvConverter.RGB24toRGB16(0x80,0x80,0x00);
-    Serial.println(rgb16_result,HEX);
-
-    //Olive color from RGB16 to RGB24
-    rgb rgb24_result = hsvConverter.RGB16toRGB24(rgb16_result);
-    Serial.println(rgb24_result.r);
-    Serial.println(rgb24_result.g);
-    Serial.println(rgb24_result.b);
 }
 
 void loop(){
