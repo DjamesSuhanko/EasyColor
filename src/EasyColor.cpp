@@ -87,9 +87,6 @@ rgb EasyColor::HSVRGB::HSVtoRGB(hsv in, rgb out)
     out.g = (gp + m) * 255;
     out.b = (bp + m) * 255;
   
-    Serial.println(out.r);
-    Serial.println(out.g);
-    Serial.println(out.b);
     return out;
 }
 
