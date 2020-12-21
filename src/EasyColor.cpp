@@ -165,7 +165,7 @@ cmyk EasyColor::CMYKRGB::RGBtoCMYK(rgb in, cmyk out)
     float Gfrac = (float)in.g/(float)255;
     float Bfrac = (float)in.b/(float)255;
 
-    float K = 1-max({Rfrac,Gfrac,Bfrac});
+    float K = 1-max(Rfrac,max(Gfrac,Bfrac));
 
     float C = (1-Rfrac-K)/(1-K);
     float M = (1-Gfrac-K)/(1-K);
