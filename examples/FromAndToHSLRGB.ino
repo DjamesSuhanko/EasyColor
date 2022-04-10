@@ -28,17 +28,16 @@ void setup(){
     in_hsl.s = 0.50;
     in_hsl.l = 0.40;
     
-    //RGB24 to CMYK. If needs convertion from RGB16, take a look below
-    out_hsl = CMYKConverter.RGBtoHSL(in_rgb, out_hsl);
+    //RGB to HSL conversion
+    out_hsl = HSLConverter.RGBtoHSL(in_rgb, out_hsl);
     
     Serial.println("HSL");
     Serial.println(out_hsl.h);
     Serial.println(out_hsl.s);
     Serial.println(out_hsl.l);
     
-    //CMYK to RGB color to show in a display like ILI9341.
-    //In this case, needs convertion to RGB16. Take a look below
-    out_rgb = CMYKConverter.HSLtoRGB(in_hsl, out_rgb);
+    //HSL to RGB conversion
+    out_rgb = HSLConverter.HSLtoRGB(in_hsl, out_rgb);
     
     Serial.println("RGB");
     Serial.println(out_rgb.r);

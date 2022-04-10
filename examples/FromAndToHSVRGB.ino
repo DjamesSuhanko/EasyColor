@@ -36,7 +36,7 @@ void setup(){
     Serial.println(out_rgb.b);
 
     //HSV to RGB convertion
-    Serial.println("HVS");
+    Serial.println("HSV");
     out_hsv = hsvConverter.RGBtoHSV(in_rgb, out_hsv);
     Serial.println(out_hsv.h);
     Serial.println(out_hsv.s);
