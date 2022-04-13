@@ -30,14 +30,14 @@ void setup(){
     in_hsv.v = 255;
     
     Serial.println("RGB");
-    out_rgb =  hsvConverter.HSVtoRGB(in_hsv,out_rgb);
+    out_rgb = HSVConverter.HSVtoRGB(in_hsv,out_rgb);
     Serial.println(out_rgb.r);
     Serial.println(out_rgb.g);
     Serial.println(out_rgb.b);
 
     //HSV to RGB convertion
     Serial.println("HSV");
-    out_hsv = hsvConverter.RGBtoHSV(in_rgb, out_hsv);
+    out_hsv = HSVConverter.RGBtoHSV(in_rgb, out_hsv);
     Serial.println(out_hsv.h);
     Serial.println(out_hsv.s);
     Serial.println(out_hsv.v);
