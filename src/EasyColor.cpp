@@ -38,7 +38,7 @@ rgb EasyColor::HSVRGB::HSVtoRGB(hsv in, rgb out)
     in.v = constrain((in.v/100.0), 0, 1); //changed to work with LVGL
 
     float c = in.v * in.s;
-    float x = c * (1 - fabsf (fmod ((in.h / HUE_ANGLE), 2) - 1));
+    float x = c * (1 - fabsf (fmod ((in.h / (HUE_ANGLE/6)), 2) - 1));
     float m = in.v - c;
     float rp, gp, bp;
   
