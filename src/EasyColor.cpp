@@ -236,9 +236,9 @@ rgb EasyColor::HSLRGB::HSLtoRGB(hsl in, rgb out)
                 break;
         }
     }
-    out.r = (uint8_t) R*255.0;
-    out.g = (uint8_t) G*255.0;
-    out.b = (uint8_t) B*255.0;
+    out.r = (uint8_t) (R*255.0);
+    out.g = (uint8_t) (G*255.0);
+    out.b = (uint8_t) (B*255.0);
 
     return out;
 
